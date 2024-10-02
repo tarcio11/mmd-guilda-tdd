@@ -1,39 +1,7 @@
-class CancelOrderUseCase {
-  constructor(
-    private readonly orderRepository: GetUserRepository,
-    private readonly cancelOrderRepository: CancelOrderRepository
-  ) {}
-
-  async execute(input: { userId: string; orderId: string }) {
-    const user = await this.orderRepository.getOne({ userId: input.userId });
-    if (!user?.canCancelOrder()) throw new Error()
-    await this.cancelOrderRepository.cancel({ orderId: input.orderId });
-  }
-}
-
-interface GetUserRepository {
-  getOne: (input: { userId: string }) => Promise<User | undefined>;
-}
-
-interface CancelOrderRepository {
-  cancel: (input: { orderId: string }) => Promise<void>;
-}
-
-type Permission = 'crmo' | 'doctor' | 'admin' | 'patient'
-
-class User {
-  userId: string;
-  permission: Permission
-
-  constructor (userId: string, permission: Permission) {
-    this.userId = userId
-    this.permission = permission
-  }
-
-  canCancelOrder () {
-    return this.permission === 'crmo' || this.permission === 'admin'
-  }
-};
+import { CancelOrderUseCase } from "@/domain/use-cases/cancel-order.use-case";
+import { GetUserRepository } from "@/domain/contracts/user";
+import { CancelOrderRepository } from "@/domain/contracts/order";
+import { User } from "@/domain/entities/user";
 
 class GetUserRepositoryMock implements GetUserRepository {
   input?: { userId: string };
