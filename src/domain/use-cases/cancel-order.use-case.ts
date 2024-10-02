@@ -1,7 +1,8 @@
 import { GetUserRepository } from "../contracts/user";
 import { CancelOrderRepository } from "../contracts/order";
+import { UseCase } from "./use-case";
 
-export class CancelOrderUseCase {
+export class CancelOrderUseCase implements UseCase<{ userId: string; orderId: string }, void> {
   constructor(
     private readonly orderRepository: GetUserRepository,
     private readonly cancelOrderRepository: CancelOrderRepository

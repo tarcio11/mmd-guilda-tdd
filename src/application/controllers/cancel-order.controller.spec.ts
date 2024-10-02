@@ -1,9 +1,9 @@
-import { CancelOrderUseCase } from "@/domain/use-cases/cancel-order.use-case";
+import { UseCase } from "@/domain/use-cases/use-case";
 import { mock, MockProxy } from 'jest-mock-extended'
 
 export class CancelOrderController {
   constructor(
-    private readonly useCase: CancelOrderUseCase,
+    private readonly useCase: UseCase,
   ) {}
 
   async execute(input: { userId: string; orderId: string }) {
@@ -12,7 +12,7 @@ export class CancelOrderController {
 }
 
 describe('CancelOrderController', () => {
-  let cancelOrderUseCase: MockProxy<CancelOrderUseCase>;
+  let cancelOrderUseCase: MockProxy<UseCase>;
   let sut: CancelOrderController;
 
   beforeEach(() => {
