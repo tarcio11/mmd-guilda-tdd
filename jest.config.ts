@@ -1,17 +1,18 @@
 module.exports = {
-  roots: ['<rootDir>/src', '<rootDir>/tests'],
-  collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
+  roots: [
+    '<rootDir>/src',
+    '<rootDir>/tests'
   ],
-  coverageDirectory: 'coverage',
-  testMatch: ['**/*.spec.ts'],
-  coverageProvider: 'babel',
   moduleNameMapper: {
     '@/tests/(.+)': '<rootDir>/tests/$1',
-    '@/(.+)': '<rootDir>/src/$1',
+    '@/(.+)': '<rootDir>/src/$1'
   },
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  coverageDirectory: 'coverage',
+  collectCoverage: true,
+  coverageProvider: 'babel',
   clearMocks: true,
   transform: {
-    '^.+\\.(t|j)s$': 'ts-jest',
-  },
-};
+    '.+\\.ts$': 'ts-jest'
+  }
+}

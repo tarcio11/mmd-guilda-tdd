@@ -1,28 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "outDir": "./dist",
     "rootDirs": ["src", "tests"],
-    "baseUrl": "./",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "declaration": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "src",
     "paths": {
-      "@/tests/*": ["tests/*"],
-      "@/*": ["src/*"]
-    }
-  },
-  "include": ["src/**/*", "tests/**/*"],
-  "exclude": ["node_modules"]
+      "@/*": ["*"],
+      "@/tests/*": ["../tests/*"]
+    },
+    "outDir": "./dist",
+    "module": "commonjs",
+    "target": "es2021",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+  }
 }
