@@ -21,7 +21,8 @@ describe('CancelOrderController', () => {
   });
 
   it('should be able to cancel an order', async () => {
-    await sut.execute({ userId: 'any_user_id', orderId: 'any_order_id' });
-    expect(cancelOrderUseCase.execute).toHaveBeenCalledWith({ userId: 'any_user_id', orderId: 'any_order_id' });
+    await sut.execute({ userId: 'any_user_id_input', orderId: 'any_order_id_input' });
+
+    expect(cancelOrderUseCase.execute).toHaveBeenCalledWith({ userId: 'any_user_id_input', orderId: 'any_order_id_input' });
   });
 });
